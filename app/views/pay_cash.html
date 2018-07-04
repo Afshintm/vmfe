@@ -1,0 +1,49 @@
+<h3>Pay cash</h3>
+<h5>The machine will not accept payments more than $10 in each transaction.</h5>
+<h5>Only coins are accepted.</h5>
+<h4>Select Coins:</h4>
+<div ng-controller="cashPaymentCtrl">
+<table>
+<tr>
+	<td>
+	<button type="button" class="btn btn-primary" ng-disabled="disableCoins()" ng-click="addBalance(200)">$2 Coin</button>
+	</td>
+	<td>
+	<button type="button" class="btn btn-primary" ng-disabled="disableCoins()" ng-click="addBalance(100)">$1 Coin</button>
+	</td>
+	<td>
+	<button type="button" class="btn btn-primary" ng-disabled="disableCoins()" ng-click="addBalance(50)">50¢ Coin</button>
+	</td>
+	<td>
+	<button type="button" class="btn btn-primary" ng-disabled="disableCoins()" ng-click="addBalance(20)">20¢ Coin</button>
+	</td>
+	<td>
+	<button type="button" class="btn btn-primary" ng-disabled="disableCoins()" ng-click="addBalance(10)">10¢ Coin</button>
+	</td> 
+	<td>
+	<button type="button" class="btn btn-primary" ng-disabled="disableCoins()" ng-click="addBalance(5)">5¢ Coin</button>
+	</td>
+</tr> 
+<tr><td colspan="6"><span>&nbsp</span></td></tr>
+<tr>
+	<td colspan="3">
+		<div class="card text-white bg-success mb-3 centre" style="max-width: 18rem;">
+	  		<div class="card-header">Your Current Balance</div>
+	 		<div class="card-body">
+	    		<h4 class="card-text">${{model.balancePaid/100}}</h4>
+	  		</div>
+		</div>
+	</td>
+	<td colspan="3" ng-show="model.extra10Paid>0">
+		<div class="card text-white bg-warning mb-3 centre" style="max-width: 18rem;">
+	  		<div class="card-header">Your Exrta Payment</div>
+	 		<div class="card-body">
+	    		<h4 class="card-text">${{model.extra10Paid/100}}</h4>
+	  		</div>
+		</div>
+	</td>
+</tr>
+<tr><td colspan="6"></td></tr>
+</tr><tr><td colspan="6"><a ui-sref="vmMain">Step 2: Select the Item</a></td></tr>
+</table>
+</div>

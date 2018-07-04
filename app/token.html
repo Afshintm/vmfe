@@ -1,0 +1,44 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+  <base href="/">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>directPost</title>
+  <!-- build:css ./css/token.min.css -->
+  <link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap.css">
+  <!-- endbuild -->
+  <link ng-if="vocus" rel="shortcut icon" href="./favicon-vocus.ico">
+  <link ng-if="!vocus" rel="shortcut icon" href="./favicon-commander.ico">
+</head>
+
+<body ng-app="directpostApp" ng-controller="AcceptPaymentController as ctrl">
+
+  <!-- BEGIN CONTAINER -->
+  <div class="page-container">
+    <!-- BEGIN PAGE -->
+    <div class="page-content">
+      <div class="row-fluid">
+        <div class="span12">
+          <div ng-if="ctrl.message" class="alert" ng-class="{'alert-success': ctrl.message === 'Approved', 'alert-danger': ctrl.message !== 'Approved'}">
+            <button type="button" ng-click="model.message=undefined" class="close">&times;</button>
+            <i class="fa" ng-class="{'fa-check-square': ctrl.message === 'Approved', 'fa-exclamation-triangle': ctrl.message !== 'Approved'}"></i>
+            <span ng-bind="ctrl.message"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END PAGE -->
+  </div>
+  <!-- END CONTAINER -->
+
+  <!-- build:js ./js/token.min.js -->
+  <script src="./bower_components/angular/angular.min.js"></script>
+  <script src="./scripts/directpost.js"></script>
+  <script src="./scripts/controllers/acceptPaymentController.js"></script>
+  <!-- endbuild -->
+</body>
+
+</html>
+

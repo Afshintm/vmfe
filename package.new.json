@@ -1,0 +1,44 @@
+{
+  "name": "mytodo",
+  "dependencies": {},
+  "devDependencies": {
+    "chalk": "^1.1.3",
+    "convert-source-map": "^1.2.0",
+    "each-async": "^1.1.1",
+    "grunt": "*",
+    "grunt-autoprefixer": "*",
+    "grunt-concurrent": "*",
+    "grunt-contrib-clean": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-connect": "*",
+    "grunt-contrib-copy": "*",
+    "grunt-contrib-cssmin": "*",
+    "grunt-contrib-htmlmin": "*",
+    "grunt-contrib-imagemin": "^1.0.0",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-filerev": "*",
+    "grunt-google-cdn": "*",
+    "grunt-karma": "*",
+    "grunt-newer": "*",
+    "grunt-ng-constant": "^1.0.0",
+    "grunt-ngmin": "*",
+    "grunt-svgmin": "*",
+    "grunt-usemin": "*",
+    "grunt-wiredep": "*",
+    "jshint-stylish": "^0.2.0",
+    "karma": "*",
+    "karma-jasmine": "*",
+    "karma-phantomjs-launcher": "*",
+    "load-grunt-tasks": "*",
+    "serve-static": "*",
+    "time-grunt": "*"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  }
+}

@@ -1,0 +1,17 @@
+<div class="jumbotron">
+  <h2>A simple prototype of AngularJs application</h2>
+</div>
+<div class="row marketing jumbotron" ng-controller="MainCtrl">
+  <h4>This prototype features</h4>
+  <ul ng-repeat="thing in awesomeThings">
+    <li >{{thing}}
+    </li >
+  </ul>
+</div>
+<div>
+	<button class="btn btn-lg btn-primary" ng-click="login()" ng-show="!isAuthenticated" ng-model="isAuthenticated">login</button>
+<span ng-show="isAuthenticated">
+  <a href="#" ng-show="isAuthenticated" ng-click="logout()">Logout</a> {{authenticatedUserEmail}}
+</span>
+</div>
+ 

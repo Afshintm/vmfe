@@ -1,0 +1,9 @@
+.mydiv{
+	width: 50%;
+	height: 50%;
+	background-color: yellow;
+	padding:100px;
+	border: dashed blue 30px ;
+	margin :30px;
+	
+}

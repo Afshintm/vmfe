@@ -1,0 +1,101 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="row-fluid">
+      <div class="col-md-12" ng-form="frmMethod">
+        <div class="panel">
+
+          <div class="panel-heading">
+            <span class="panel-title marginLeft15"><strong>Pay by Cerdir/Debit Card</strong></span>
+          </div>
+
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-lg-12">
+                <p>We accept  MasterCard, Visa, American Express and Diners Club cards.</p>
+                <p>Please note:</p>
+                <p>
+                  <ul>
+                    <li>Authorisation may take up to 30 seconds. Please wait, a confirmation screen will appear shortly.</li>
+                    <li>Visa and MasterCard each carry a surcharge of 0.43% (inc GST).</li>
+                    <li>American Express and Diners Club each carry a surcharge of 2.89% (inc GST).</li>
+                  </ul>
+                </p>
+              </div>
+            </div>
+
+                      
+            <div class="well well-sm" style="min-height:230px;">
+
+              <div class="tab-content">
+                <br/>
+                <div class="row">
+                  <div ng-switch on="formData.paymentMethod" class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+                    <div ng-switch-when="0" class="tab-pane active">
+                      <br/>
+                      <div class="form-horizontal" ng-form="card">
+                      
+                        <div class="form-group" ng-class="{'has-warning': !formData.cardnumber, 'has-error': card.cardnumber.$dirty && card.cardnumber.$invalid}" placeholder="formData.cardnumber">
+                          <label class="col-sm-3 control-label">Credit Card Number:
+                          </label>
+                          <div class="col-sm-9">
+                            <input class="form-control form-cascade-control" ng-model="formData.cardnumber" name="cardnumber" type="tel" required="required" maxlength="16" ng-pattern="/\d*/" autofocus tabindex="2" ng-minlength="13" ng-maxlength="16" autocomplete="off" tabindex="3" tc-validate-creditcard>
+                            <span class="form-control-feedback" tc-card-type="{{formData.cardnumber}}"></span>
+                          </div>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-warning': !formData.expirymonth || !formData.expiryyear, 'has-error': isNotValidMonth(formData.expirymonth, formData.expiryyear) ||  isNotValidYear(formData.expiryyear)}">
+                          <label class="col-sm-3 control-label">
+                            Expiry Date:
+                          </label>
+                          <div class="col-sm-9">
+                            <div class="row">
+                              <div class="col-xs-5 col-sm-4">
+                                <input class="form-control col-sm-2" type="tel" ng-model="formData.expirymonth" name="expirymonth" ng-required="true" maxlength=2 placeholder="MM" autocomplete="off" tabindex="4">
+                              </div>
+                              <div class="col-xs-2 col-sm-4 text-center">&#47;</div>
+                              <div class="col-xs-5 col-sm-4">
+                                <input class="form-control" ng-model="formData.expiryyear" type="tel" name="expiryyear" ng-required="true" maxlength="4" placeholder="YYYY" autocomplete="off" tabindex="5">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-warning': !formData.ccv}">
+                          <label class="col-sm-3 control-label">Card Verification Number:
+                          </label>
+                          <div class="col-sm-9">
+                            <div class="row">
+                              <div class="col-xs-5 col-sm-4">
+                                <input type="tel" ng-model="formData.ccv" class="form-control" name="ccv" required="true" pattern="^\d{3,4}$" size="4" maxlength=4 minlength=3 tabindex="6" autocomplete="off">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group text-center">
+              <div class="col-lg-offset-2 col-lg-8">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-7">
+                <div ng-class="{'loading': processing}">
+                  <a class="btn btn-primary pull-right fx-pulse fx-speed-1232" tc-pulse-on-click role="button" tabindex="8"  ng-disabled="frmMethod.$invalid" ng-click="submit(frmMethod)">Submit</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div auto-submit-form trigger="sendToSecurepay" data="securepay.data" result-url="formData.resultUrl"></div>
+      </div>
+    </div>
+  </div>
+</div>
+

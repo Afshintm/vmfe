@@ -1,0 +1,80 @@
+<div class="row-fluid" ng-controller="vmMainCtrl">
+	<h4>{{model.viewTitle}}</h4>
+	<div class="col-lg-12">
+	<table>
+		<tr>
+		<td>
+			<div class="card text-white bg-success mb-3 centre" ng-show="model.currentTransaction.balancePaid>0" style="max-width: 18rem;">
+		  		<div class="card-header">Your Current Balance</div>
+		 		<div class="card-body">
+		    		<h4 class="card-text">${{model.currentTransaction.balancePaid/100}}</h4>
+		  		</div>
+			</div>
+		</td>
+		<td ng-show="model.currentTransaction.extraPaid>0">
+			<div class="card text-white bg-warning mb-3 centre" style="max-width: 18rem;">
+		  		<div class="card-header">Your Exrta Payment</div>
+		 		<div class="card-body">
+		    		<h4 class="card-text">${{model.currentTransaction.extraPaid/100}}</h4>
+		  		</div>
+			</div>
+		</td>
+	</tr>
+		</table>
+	</div>
+
+	<div class="col-lg-12" ng-show="model.productList">
+		<h5>List of Available Cans in the Machine</h5>
+		<table class="table table-striped table-bordered table-hover table-condensed dataTable">
+			<thead>
+				<tr role="row">
+					<th role="columnheader"> Id </th>
+					<th role="columnheader"> Name </th>
+					<th role="columnheader"> Price </th>
+				</tr>
+			</thead>
+			<tr ng-repeat="p1 in model.productList">
+				<td data-title="Id"><span>{{p1.Id}}</span></td>
+                <td data-title="Name">
+	                <span ng-show="model.currentTransaction.balancePaid/100 >= p1.Price" style="background-color:#eee">
+	                	<button class="btn btn-block btn-success mini" type="button" ng-click="selectProduct(p1.Id)"><i class="icon-select"></i>{{p1.Name}}</button>
+	                </span>
+	                <span ng-show="model.currentTransaction.balancePaid/100 < p1.Price">{{p1.Name}}</span>
+                </td>
+                <td data-title="Price"><span>{{p1.Price}}</span></td>
+			</tr>
+		</table>
+	</div>
+	<div id="divDispence" class="col-lg-12" ng-show="inDispenceStatus()">
+		<table>
+			<tr>
+			<td>
+				<div class="card text-white bg-success mb-3 centre" ng-show="inDispenceStatus()" style="max-width: 18rem;">
+			  		<div class="card-header">Please Pick up your Item</div>
+			 		<div class="card-body">
+			    		<h4 class="card-text">{{getDispencedItem()}}</h4>
+			  		</div>
+				</div>
+						 </td></tr>
+			<tr><td>
+					<div class="card text-white bg-success mb-3 centre" ng-show="isAnyChangeAvailable()" style="max-width: 18rem;">
+			  		<div class="card-header">Please Pick up your Change</div>
+			 		<div class="card-body">
+			    		<h4 class="card-text">{{model.dispenseModel.changeSetup}}</h4>
+			  		</div>
+				</div>
+
+
+			</td></tr>
+		</table>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
